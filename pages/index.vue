@@ -7,12 +7,24 @@
       <button>find</button>
     </div>
     <ul>
-      <li>
-        <span>Todo</span><span>(2019-03-31 15:00)</span><span>×</span>
+      <li v-for="(todo, index) in todos" :key="index">
+        <span>{{ todo.content }}</span><span>({{ todo.created }})</span><span>×</span>
       </li>
     </ul>
   </section>
 </template>
 
 <script>
+import {mapState} from 'vuex';
+
+export default {
+  data: function() {
+    return {
+      content: ''
+    }
+  },
+  computed: {
+    ...mapState(['todos'])
+  }
+}
 </script>
